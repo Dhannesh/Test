@@ -19,7 +19,7 @@ const buldOperation = (e) => {
       clearInterval(intervalId);
       img.setAttribute("src", "offBulb.png");
       checkbox.checked = "";
-      progress.value=0;
+      progress.setAttribute("value", 0);
     }, 10000);
   } else {
     img.setAttribute("src", "offBulb.png");
