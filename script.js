@@ -1,13 +1,25 @@
+const updateProgress = (progress) => {
+  progress.setAttribute("value", progress.value - 10);
+  // console.log(progress.value);
+};
 const buldOperation = (e) => {
   const data = e.target.id;
 
   const id = data.substring(3);
   const bulbId = "bulb" + id;
   const img = document.getElementById(bulbId);
-  console.log(img);
+  const progress = document.getElementById("prg" + id);
+  const checkbox = document.getElementById("chk" + id);
+  progress.setAttribute("value", 100);
 
   if (e.target.checked) {
     img.setAttribute("src", "onBulb.png");
+    let intervalId = setInterval(updateProgress, 1000, progress);
+    setTimeout(() => {
+      clearInterval(intervalId);
+      img.setAttribute("src", "offBulb.png");
+      checkbox.checked = "";
+    }, 10000);
   } else {
     img.setAttribute("src", "offBulb.png");
   }
@@ -35,7 +47,11 @@ const handleCount = () => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = "chk" + i;
-    bulb.append(img, checkbox);
+    const progress = document.createElement("progress");
+    progress.setAttribute("value", 0);
+    progress.setAttribute("max", 100);
+    progress.setAttribute("id", "prg" + i);
+    bulb.append(img, checkbox, progress);
     checkbox.setAttribute("onclick", "buldOperation(event)");
     divBulb.append(bulb);
     divBulb.setAttribute("style", "display:flex");
