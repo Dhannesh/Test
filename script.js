@@ -20,7 +20,7 @@ const buldOperation = (e) => {
       img.setAttribute("src", "offBulb.png");
       checkbox.checked = "";
       progress.setAttribute("value", 0);
-    }, 11000);
+    }, 10000);
   } else {
     img.setAttribute("src", "offBulb.png");
   }
