@@ -1,5 +1,5 @@
 const updateProgress = (progress) => {
-  progress.setAttribute("value", progress.value - 12);
+  progress.setAttribute("value", progress.value - 11);
   // console.log(progress.value);
 };
 const buldOperation = (e) => {
